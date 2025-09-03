@@ -3,20 +3,38 @@ name: Angular Build
 on:
   push:
     branches:
-      - master
+      - master   # or your default branch
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - name: Use Node.js
+    steps:
+      # 1. Checkout repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2. Setup Node.js (Angular 19 works best with Node 20+)
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20'
 
-      - run: npm install
-      - run: npm run build --if-present
+      # 3. Cache npm dependencies (faster builds)
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 5. Build Angular app (output goes to dist/<project-name>/browser)
+      - name: Build Angular app
+        run: npm run build --if-present
 
