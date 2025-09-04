@@ -37,4 +37,8 @@ jobs:
       # 5. Build Angular app (output goes to dist/<project-name>/browser)
       - name: Build Angular app
         run: npm run build --if-present
-
+      - name: Upload dist folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-folder
+          path: dist/
