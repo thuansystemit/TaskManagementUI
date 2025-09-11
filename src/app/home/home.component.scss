@@ -1,0 +1,27 @@
+.home-container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      background: #fafafa;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: #007bff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+    button:hover {
+      background: #0056b3;
+    }
