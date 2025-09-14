@@ -1,18 +1,7 @@
 <ng-container *ngIf="vm$ | async as vm">
-  <ng-container *ngIf="!vm.loading; else loadingTpl">
-    <div *ngIf="vm.user as user; else noUserTpl" class="home-container">
-      <h1>Welcome, {{ user.firstName }} {{ user.lastName }}</h1>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Role:</strong> {{ user.userRole }}</p>
-      <button (click)="logout()">Logout</button>
-    </div>
-
-    <ng-template #noUserTpl>
-      <p>No user logged in. <a routerLink="/login">Login</a></p>
-    </ng-template>
-  </ng-container>
+  <app-navbar [user]="vm.user"></app-navbar>
 </ng-container>
 
-<ng-template #loadingTpl>
-  <p>Loading profile...</p>
-</ng-template>
+<main class="home-content">
+  <router-outlet></router-outlet>
+</main>
