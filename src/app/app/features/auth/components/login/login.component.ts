@@ -23,12 +23,14 @@ export class LoginComponent {
     constructor(private auth: AuthService, private router: Router) {}
 
     submit() {
-      if (this.form.invalid) return this.form.markAllAsTouched();
+      if (this.form.invalid) {
+        return this.form.markAllAsTouched()
+      };
       this.loading = true;
       this.error = null;
       const { email, password } = this.form.value;
       this.auth.login(email!, password!).pipe(
-        switchMap(() => this.auth.loadProfile()), // ⬅ wait for profile here
+        switchMap(() => this.auth.loadProfile()),
         catchError(err => {
           this.loading = false;
           this.error = err?.error?.message || 'Login failed';
@@ -37,7 +39,6 @@ export class LoginComponent {
     ).subscribe(profile => {
       this.loading = false;
       if (profile) {
-        // ⬅ Navigate only after profile is loaded and user$ updated
         this.router.navigate(['/']);
       }
     });

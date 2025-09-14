@@ -3,7 +3,7 @@
     <div *ngIf="vm.user as user; else noUserTpl" class="home-container">
       <h1>Welcome, {{ user.firstName }} {{ user.lastName }}</h1>
       <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Role:</strong> {{ user.role }}</p>
+      <p><strong>Role:</strong> {{ user.userRole }}</p>
       <button (click)="logout()">Logout</button>
     </div>
 
