@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { filter, map, Observable, startWith } from 'rxjs';
-import { AuthService } from '../app/core/services/auth.service';
-import { User } from '../app/core/models/user.mode';
+import { AuthService } from '../core/services/auth.service';
+import { User } from '../core/models/user.mode';
 
 @Component({
   selector: 'app-home',
